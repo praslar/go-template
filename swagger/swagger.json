@@ -1,0 +1,326 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "beego Test API",
+        "description": "beego has a very cool tools to autogenerate documents for your API",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "basePath": "/api",
+    "paths": {
+        "/metadata/": {
+            "get": {
+                "tags": [
+                    "metadata"
+                ],
+                "description": "get Meta",
+                "operationId": "MetaController.Get all data of metadata",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "type",
+                        "description": "type",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "platform_key",
+                        "description": "platform_key",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.MetaData"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/variant/": {
+            "get": {
+                "tags": [
+                    "variant"
+                ],
+                "description": "get variants",
+                "operationId": "VariantController.GetAll",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "authen key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "size",
+                        "description": "size per page",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "page number (\u003e 0)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "platform_key",
+                        "description": "platform code",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "search",
+                        "description": "search",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "admin_name",
+                        "description": "admin name of variant",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Variant"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "forbidden"
+                    },
+                    "500": {
+                        "description": "error server"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "variant"
+                ],
+                "description": "create variant",
+                "operationId": "VariantController.Create",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "authen key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user id call request",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for variant content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Variant"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Variant"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "forbidden"
+                    },
+                    "500": {
+                        "description": "error server"
+                    }
+                }
+            }
+        },
+        "/variant/{id}": {
+            "get": {
+                "tags": [
+                    "variant"
+                ],
+                "description": "get variant by id",
+                "operationId": "VariantController.GetOne",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "authen key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "id variant",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Variant"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "forbidden"
+                    },
+                    "500": {
+                        "description": "error server"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "variant"
+                ],
+                "description": "update the variant",
+                "operationId": "VariantController.Put",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "authen key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user id call request",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for station content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Variant"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Variant"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "forbidden"
+                    },
+                    "500": {
+                        "description": "error server"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "variant"
+                ],
+                "description": "delete the variant",
+                "operationId": "VariantController.Delete",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "authenticate key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete product attribute id"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.MetaData": {
+            "title": "MetaData",
+            "type": "object"
+        },
+        "models.Variant": {
+            "title": "Variant",
+            "type": "object"
+        }
+    },
+    "tags": [
+        {
+            "name": "metadata",
+            "description": "MetaController operations for Meta\n"
+        }
+    ]
+}

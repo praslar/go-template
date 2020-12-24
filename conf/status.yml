@@ -1,0 +1,46 @@
+gen:
+  success:
+    code: "success"
+    status: 200
+    message: "Success"
+
+  not_found:
+    code: "error"
+    status: 404
+    message: "Not found"
+
+  timeout:
+    code: "error"
+    status: 500
+    message: "Timeout"
+
+  bad_request:
+    code: "error"
+    status: 400
+    message: "Invalid input"
+
+  internal:
+    code: "error"
+    status: 500
+    message: "Internal server error"
+
+  unauthorized:
+    code: "error"
+    status: 401
+    message: "Authorization required"
+
+  database:
+    code: "error"
+    status: 500
+    message: "Database error"
+
+variant:
+  duplicated:
+    code: "error"
+    status: 400
+    message: "Variant key already existed"
+
+  not_found:
+    code: "error"
+    status: 404
+    message: "Variant not found"

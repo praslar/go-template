@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "83714c05-ea89-47fe-bbde-af4335514fe4",
+		"name": "CENTRAL-VARIANT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create variant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTAxMTgxOTEsImp0aSI6IjM3YjRhYmM1LTY0ZTMtNGIzMi1hNzliLTE1NDdiZmRjNjQ4ZSJ9.PkVRoiVrg95IXmimB7vcH0_JF7NeNNh3_D013u1WpYc",
+						"disabled": true
+					},
+					{
+						"key": "x-user-id",
+						"type": "text",
+						"value": "e259d26c-574e-44d3-bcd8-627f53d0b121"
+					},
+					{
+						"key": "offset",
+						"type": "text",
+						"value": "0",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"admin_name\": \"aaaa\",\n  \"display_labels\": {\"en\": \"Shampoo\", \"vn\": \"Dầu gội\"},\n  \"display_names\": {\"en\": \"Shampoo\", \"vn\": \"Dầu gội\"},\n  \"help_modal_data\": {\"en\": \"Shampoo\", \"vn\": \"Dầu gội\"},\n  \"input_type\": \"list\",\n  \"is_active\": true,\n  \"list_data\": {\"en\": \"Shampoo\", \"vn\": \"Dầu gội\"},\n  \"platform_key\": \"bip\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_sku}}/api/variant",
+					"host": [
+						"{{base_url_sku}}"
+					],
+					"path": [
+						"api",
+						"variant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One variant",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTAxMTgxOTEsImp0aSI6IjM3YjRhYmM1LTY0ZTMtNGIzMi1hNzliLTE1NDdiZmRjNjQ4ZSJ9.PkVRoiVrg95IXmimB7vcH0_JF7NeNNh3_D013u1WpYc"
+					},
+					{
+						"key": "limit",
+						"type": "text",
+						"value": "3",
+						"disabled": true
+					},
+					{
+						"key": "offset",
+						"type": "text",
+						"value": "0",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Name update Station 1\",\n\t\"address\": \"HCM\",\n\t\"is_active\": false,\n\t\"contact\" : \"Nguyen Minh Hieu\",\n\t\"contact_email\": \"hieuit275@gmail.com\",\n\t\"platform_key\" : \"BIPBIP\",\n\t\"location_short_id\": \"HCM\",\n\t\"latitude\": 10.775659,\n\t\"longitude\": 106.700424\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_sku}}/api/variant/218e8a58-bf9c-4a91-9229-5f9abf31fee3",
+					"host": [
+						"{{base_url_sku}}"
+					],
+					"path": [
+						"api",
+						"variant",
+						"218e8a58-bf9c-4a91-9229-5f9abf31fee3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update variant",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTAxMTgxOTEsImp0aSI6IjM3YjRhYmM1LTY0ZTMtNGIzMi1hNzliLTE1NDdiZmRjNjQ4ZSJ9.PkVRoiVrg95IXmimB7vcH0_JF7NeNNh3_D013u1WpYc"
+					},
+					{
+						"key": "x-user-id",
+						"type": "text",
+						"value": "e259d26c-574e-44d3-bcd8-627f53d0b121"
+					},
+					{
+						"key": "offset",
+						"type": "text",
+						"value": "0",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"admin_name\": \"string\",\r\n  \"display_labels\": {\"en\": \"Shampoo\", \"vn\": \"Dầu gội\"},\r\n  \"display_names\": {\"en\": \"Shampoo\", \"vn\": \"Dầu gội\"},\r\n  \"help_modal_data\": {\"en\": \"Shampoo\", \"vn\": \"Dầu gội\"},\r\n  \"input_type\": \"list\",\r\n  \"is_active\": true,\r\n  \"list_data\": {\"en\": \"Shampoo\", \"vn\": \"Dầu gội\"},\r\n  \"platform_key\": \"bip\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_sku}}/api/variant/218e8a58-bf9c-4a91-9229-5f9abf31fee3",
+					"host": [
+						"{{base_url_sku}}"
+					],
+					"path": [
+						"api",
+						"variant",
+						"218e8a58-bf9c-4a91-9229-5f9abf31fee3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_sku}}/api/status",
+					"host": [
+						"{{base_url_sku}}"
+					],
+					"path": [
+						"api",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List Metadata",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTAxMTgxOTEsImp0aSI6IjM3YjRhYmM1LTY0ZTMtNGIzMi1hNzliLTE1NDdiZmRjNjQ4ZSJ9.PkVRoiVrg95IXmimB7vcH0_JF7NeNNh3_D013u1WpYc"
+					},
+					{
+						"key": "limit",
+						"type": "text",
+						"value": "3",
+						"disabled": true
+					},
+					{
+						"key": "offset",
+						"type": "text",
+						"value": "0",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Name update Station 1\",\n\t\"address\": \"HCM\",\n\t\"is_active\": false,\n\t\"contact\" : \"Nguyen Minh Hieu\",\n\t\"contact_email\": \"hieuit275@gmail.com\",\n\t\"platform_key\" : \"BIPBIP\",\n\t\"location_short_id\": \"HCM\",\n\t\"latitude\": 10.775659,\n\t\"longitude\": 106.700424\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_sku}}/api/metadata?platform_key=aa&type=aaa",
+					"host": [
+						"{{base_url_sku}}"
+					],
+					"path": [
+						"api",
+						"metadata"
+					],
+					"query": [
+						{
+							"key": "platform_key",
+							"value": "aa"
+						},
+						{
+							"key": "type",
+							"value": "aaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list variant",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTAxMTgxOTEsImp0aSI6IjM3YjRhYmM1LTY0ZTMtNGIzMi1hNzliLTE1NDdiZmRjNjQ4ZSJ9.PkVRoiVrg95IXmimB7vcH0_JF7NeNNh3_D013u1WpYc"
+					},
+					{
+						"key": "limit",
+						"type": "text",
+						"value": "3",
+						"disabled": true
+					},
+					{
+						"key": "offset",
+						"type": "text",
+						"value": "0",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Name update Station 1\",\n\t\"address\": \"HCM\",\n\t\"is_active\": false,\n\t\"contact\" : \"Nguyen Minh Hieu\",\n\t\"contact_email\": \"hieuit275@gmail.com\",\n\t\"platform_key\" : \"BIPBIP\",\n\t\"location_short_id\": \"HCM\",\n\t\"latitude\": 10.775659,\n\t\"longitude\": 106.700424\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_sku}}/api/variants?page=1&size=2&platform_key=bipbip&admin_name=a",
+					"host": [
+						"{{base_url_sku}}"
+					],
+					"path": [
+						"api",
+						"variants"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						},
+						{
+							"key": "platform_key",
+							"value": "bipbip"
+						},
+						{
+							"key": "admin_name",
+							"value": "a",
+							"description": "all language\n"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
