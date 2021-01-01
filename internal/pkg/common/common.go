@@ -10,7 +10,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/jinzhu/gorm/dialects/postgres"
 	"math"
-	postgres2 "gitlab.com/jamalex-ltd/r-d-department/go-template/internal/pkg/db/postgres"
+	postgres2 "go-template/internal/pkg/db/postgres"
 	"net/http"
 	"reflect"
 	"strconv"

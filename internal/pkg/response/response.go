@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/pkg/status"
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/pkg/utils"
+	"go-template/internal/pkg/status"
+	"go-template/internal/pkg/utils"
 )
 
 type (

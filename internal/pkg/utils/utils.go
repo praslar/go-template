@@ -3,13 +3,13 @@ package utils
 import (
 	"errors"
 	"fmt"
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/conf"
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/pkg/db/postgres"
+	"go-template/conf"
+	"go-template/internal/pkg/db/postgres"
 	"time"
 
 	"github.com/jinzhu/gorm"
 
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/types"
+	"go-template/internal/app/models"
 )
 
 var (
@@ -33,7 +33,7 @@ func AutoMigration() (err error) {
 		return fmt.Errorf("error while creating DB extension 'uuid-ossp': %s", err)
 	}
 	//migrate table
-	t := dbPublic.AutoMigrate(&types.Variant{}, &types.MetaData{})
+	t := dbPublic.AutoMigrate(&models.Temp{})
 	return t.Error
 }
 

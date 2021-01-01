@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/pkg/utils"
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/routers"
+	"go-template/internal/pkg/utils"
+	"go-template/routers"
 
 	"github.com/astaxie/beego"
 )

@@ -8,10 +8,10 @@
 package routers
 
 import (
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/databases"
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers"
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/helpers"
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/pkg/db/postgres"
+	"go-template/internal/app/databases"
+	"go-template/internal/app/controller"
+	"go-template/internal/app/helpers"
+	"go-template/internal/pkg/db/postgres"
 
 	"github.com/astaxie/beego"
 )
@@ -22,28 +22,18 @@ func Initialize(name, version string) {
 	if err != nil {
 		return
 	}
-	variantDB := databases.NewVariantDatabase(d)
-	metadataDB := databases.NewMetadataDatabase(d)
-
-	variantHelper := helpers.NewVariantHelper(variantDB)
-	metadataHelper := helpers.NewMetadataHelper(metadataDB)
+	tempDB := databases.NewTempDatabase(d)
+	tempHelper := helpers.NewTempHelper(*tempDB)
 
 	ns := beego.NewNamespace("/api",
-		beego.NSNamespace("/variant",
+		beego.NSNamespace("/temp",
 			beego.NSInclude(
-				&handlers.VariantController{
-					VariantHelper: variantHelper,
+				&controller.TempController{
+					TempHelper: tempHelper,
 				},
 			),
 		),
-		beego.NSNamespace("/metadata",
-			beego.NSInclude(
-				&handlers.MetaController{
-					MetadataHelper: metadataHelper,
-				},
-			),
-		),
-		beego.NSRouter("/status", handlers.NewHealthController(name, version)),
+		beego.NSRouter("/status", controller.NewHealthController(name, version)),
 	)
 	beego.AddNamespace(ns)
 }

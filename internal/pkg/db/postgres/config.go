@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"sync"
 
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/conf"
+	"go-template/conf"
 
 	"github.com/caarlos0/env/v6"
 	"github.com/jinzhu/gorm"

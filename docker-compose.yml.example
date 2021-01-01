@@ -1,11 +1,11 @@
 version: "3"
 services:
-  gitlab.com/jamalex-ltd/r-d-department/go-template:
+  go-template:
     image: golang:1.14
     command: ["go", "run", "main.go"]
-    working_dir: /gitlab.com/jamalex-ltd/r-d-department/go-template
+    working_dir: /go-template
     volumes:
-      - .:/gitlab.com/jamalex-ltd/r-d-department/go-template
+      - .:/go-template
       - shared_gopath:/gopath
     depends_on:
       - postgres

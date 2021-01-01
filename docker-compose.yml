@@ -1,36 +1,58 @@
 version: "3"
 services:
-  gitlab.com/jamalex-ltd/r-d-department/go-template:
-    image: golang:1.14
-    command: ["go", "run", "main.go"]
-    working_dir: /gitlab.com/jamalex-ltd/r-d-department/go-template
-    volumes:
-      - .:/gitlab.com/jamalex-ltd/r-d-department/go-template
-      - shared_gopath:/gopath
-    depends_on:
-      - postgres
-    environment:
-      HTTP_PORT: 80
-      GOPATH: /gopath
-    ports:
-      - 8089:80
+  #  go-template:
+  #    image: golang:1.14
+  #    command: ["go", "run", "main.go"]
+  #    working_dir: /go-template
+  #    volumes:
+  #      - .:/go-template
+  #      - shared_gopath:/gopath
+  #    depends_on:
+  #      - postgres
+  #    environment:
+  #      HTTP_PORT: 80
+  #      GOPATH: /gopath
+  #    ports:
+  #      - 8089:80
 
   postgres:
     image: postgres:11
     environment:
-      POSTGRES_PASSWORD: awbblue
-      POSTGRES_USER: awbblue
-      POSTGRES_DB: awbblue
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      POSTGRES_PASSWORD: hieuminh
+      POSTGRES_USER: hieuminh
+      POSTGRES_DB: hieuminh
+      POSTGRES_SCHEMA: public
+    #    volumes:
+    #      - ./postgres_data:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5433:5432
 
   adminer:
     image: adminer:4
     ports:
       - 8888:8080
 
+  graphql-engine:
+    image: hasura/graphql-engine:v1.3.4-beta.2
+    ports:
+      - "8083:8080"
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://hieuminh:hieuminh@postgres:5432/hieuminh
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: 'true'
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to set an admin secret
+      HASURA_GRAPHQL_ADMIN_SECRET: hieuminh
+      HASURA_GRAPHQL_JWT_SECRET: '{"type": "HS256","key": "3EK6FD+o0+c7tzBNVfjpMkNDi2yARAAKzQlk8O2IKoxQu4nF7EdAh8s3TwpHwrdWT6R"}'
+    command:
+      - graphql-engine
+      - serve
+      - --enable-console
 volumes:
   # use a shared gopath, avoid re-download module each go running
   shared_gopath: {}

@@ -7,7 +7,7 @@ import (
 
 func init() {
 
-    beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:MetaController"] = append(beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:MetaController"],
+    beego.GlobalControllerRouter["go-template/internal/app/controller:MetaController"] = append(beego.GlobalControllerRouter["go-template/internal/app/controller:MetaController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -16,7 +16,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"] = append(beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"],
+    beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"] = append(beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -25,7 +25,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"] = append(beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"],
+    beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"] = append(beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -34,7 +34,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"] = append(beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"],
+    beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"] = append(beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -43,7 +43,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"] = append(beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"],
+    beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"] = append(beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -52,7 +52,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"] = append(beego.GlobalControllerRouter["gitlab.com/jamalex-ltd/r-d-department/go-template/internal/app/handlers:VariantController"],
+    beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"] = append(beego.GlobalControllerRouter["go-template/internal/app/controller:VariantController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,

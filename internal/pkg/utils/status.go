@@ -7,7 +7,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"gitlab.com/jamalex-ltd/r-d-department/go-template/internal/pkg/status"
+	"go-template/internal/pkg/status"
 )
 
 type (

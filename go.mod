@@ -1,4 +1,4 @@
-module gitlab.com/jamalex-ltd/r-d-department/go-template
+module go-template
 
 go 1.14
 

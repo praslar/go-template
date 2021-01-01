@@ -8,7 +8,7 @@ variables:
   DOCKER_DRIVER: overlay2
   GIT_STRATEGY: fetch
   GIT_DEPTH: 20
-  SERVICE: gitlab.com/jamalex-ltd/r-d-department/go-template
+  SERVICE: go-template
   TEAM: jx
   APP_NAME: central
   VERSION: $CI_COMMIT_REF_NAME
