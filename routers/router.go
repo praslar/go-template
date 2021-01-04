@@ -23,8 +23,7 @@ func Initialize(name, version string) {
 		return
 	}
 	tempDB := databases.NewTempDatabase(d)
-	tempHelper := helpers.NewTempHelper(*tempDB)
-
+	tempHelper := helpers.NewTempHelper(tempDB)
 	ns := beego.NewNamespace("/api",
 		beego.NSNamespace("/temp",
 			beego.NSInclude(

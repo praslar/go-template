@@ -4,11 +4,10 @@ import (
 	"context"
 	"github.com/astaxie/beego"
 	"github.com/google/uuid"
-	"go-template/internal/app/databases"
 	"go-template/internal/app/models"
 )
 
-type TempDatabase interface {
+type tempDatabase interface {
 	models.BaseDatabase
 	// some func of Temp
 }
@@ -19,7 +18,7 @@ var (
 )
 
 type TempHelper struct {
-	tempDB TempDatabase
+	tempDB tempDatabase
 }
 
 func (t *TempHelper) Create(ctx context.Context, req interface{}) (interface{}, error) {
@@ -118,7 +117,7 @@ func (t *TempHelper) Delete(ctx context.Context, id uuid.UUID) error {
 	//return nil
 }
 
-func NewTempHelper(db databases.TempDatabase) *TempHelper {
+func NewTempHelper(db tempDatabase) *TempHelper {
 	return &TempHelper{
 		db,
 	}
