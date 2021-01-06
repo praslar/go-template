@@ -1,32 +1,38 @@
 package controller
 
 import (
+	"context"
+	"encoding/json"
 	"github.com/astaxie/beego"
 	"go-template/internal/app/models"
+	"go-template/internal/pkg/logs"
+	"go-template/internal/pkg/response"
+	"net/http"
 )
 
-type TempController struct {
+type GraphQLController struct {
 	beego.Controller
-	TempHelper TempHelper
+	GraphQLHelper GraphQLHelper
 }
 
 // URLMapping ...
-func (c *TempController) URLMapping() {
-	c.Mapping("Post", c.Post)
+func (c *GraphQLController) URLMapping() {
+	c.Mapping("Login", c.Login)
 	c.Mapping("Put", c.Put)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Delete", c.Delete)
 }
 
-type TempHelper interface {
+type GraphQLHelper interface {
 	models.BaseHelper
 	// some func of Temp
+	Login(ctx context.Context, req interface{}) (interface{}, error)
 }
 
 var (
 	// compile time type assertion
-	_ models.BaseController = &TempController{}
+	_ models.BaseController = &GraphQLController{}
 )
 
 // Post ...
@@ -39,33 +45,22 @@ var (
 // @Failure 403  forbidden
 // @Failure 500  error server
 // @Failure 401  Unauthorized
-// @router / [post]
-func (t *TempController) Post() {
-	panic("implement me")
-	//logger := logs.WithContext(c.Ctx.Request.Context())
-	//creatorID, err := common.CurrentUser(c.Controller)
-	//if err != nil {
-	//	logger.Errorf("Invalid x-user-id, %s", err)
-	//	response.Error(c.Ctx.ResponseWriter, utils.Gen("").Unauthorized, http.StatusUnauthorized)
-	//	return
-	//}
-	//var req models.CreateTemp
-	//if err := json.NewDecoder(c.Ctx.Request.Body).Decode(&req); err != nil {
-	//	logger.Errorf("Fail to parse create variant request, %s", err)
-	//	response.Error(c.Ctx.ResponseWriter, err, http.StatusBadRequest)
-	//	return
-	//}
-	//
-	//variant, err := c.VariantHelper.Create(c.Controller.Ctx.Request.Context(), &req, creatorID)
-	//if err != nil {
-	//	logger.Errorf("Fail to create variant attribute due to %v", err)
-	//	response.Error(c.Ctx.ResponseWriter, err, http.StatusInternalServerError)
-	//	return
-	//}
-	//
-	//response.JSON(c.Ctx.ResponseWriter, http.StatusOK, response.BaseResponse{
-	//	Data: variant,
-	//})
+// @router /login [post]
+func (t *GraphQLController) Login() {
+	logger := logs.WithContext(t.Ctx.Request.Context())
+	req := models.ActionPayload{}
+	if err := json.NewDecoder(t.Ctx.Request.Body).Decode(&req); err != nil {
+		logger.Errorf("Fail to login %s", err)
+		response.Error(t.Ctx.ResponseWriter, err, http.StatusBadRequest)
+		return
+	}
+	res, err := t.GraphQLHelper.Login(t.Ctx.Request.Context(), req)
+	if err != nil {
+		logger.Errorf("Fail to login %s", err)
+		response.JSON(t.Ctx.ResponseWriter, http.StatusBadRequest, models.GraphQLError{Message: err.Error()})
+	} else {
+		response.JSON(t.Ctx.ResponseWriter, http.StatusOK, res)
+	}
 }
 
 // Put ...
@@ -80,8 +75,7 @@ func (t *TempController) Post() {
 // @Failure 500  error server
 // @Failure 401  Unauthorized
 // @router /:id [put]
-func (c *TempController) Put() {
-	//
+func (c *GraphQLController) Put() {
 	//logger := logs.WithContext(c.Ctx.Request.Context())
 	//updaterID, err := common.CurrentUser(c.Controller)
 	//if err != nil {
@@ -127,7 +121,7 @@ func (c *TempController) Put() {
 // @Failure 500  error server
 // @Failure 401  Unauthorized
 // @router /:id [get]
-func (c *TempController) GetOne() {
+func (c *GraphQLController) GetOne() {
 	//logger := logs.WithContext(c.Ctx.Request.Context())
 	//variantID, err := common.With(c.Controller).On("path").Uuid("id")
 	//if err != nil {
@@ -162,7 +156,7 @@ func (c *TempController) GetOne() {
 // @Failure 500  error server
 // @Failure 401  Unauthorized
 // @router / [get]
-func (c *TempController) GetAll() {
+func (c *GraphQLController) GetAll() {
 	//logger := logs.WithContext(c.Ctx.Request.Context())
 	//variant, err := c.VariantHelper.GetAll(c.Controller)
 	//if err != nil {
@@ -185,7 +179,7 @@ func (c *TempController) GetAll() {
 // @Failure 403  forbidden
 // @Failure 401  Unauthorized
 // @router /:id [delete]
-func (c *TempController) Delete() {
+func (c *GraphQLController) Delete() {
 	// Get x-user-id from header
 	//logger := logs.WithContext(c.Ctx.Request.Context())
 	//_, err := common.CurrentUser(c.Controller)

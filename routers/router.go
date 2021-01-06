@@ -8,12 +8,11 @@
 package routers
 
 import (
-	"go-template/internal/app/databases"
+	"github.com/astaxie/beego"
 	"go-template/internal/app/controller"
+	"go-template/internal/app/databases"
 	"go-template/internal/app/helpers"
 	"go-template/internal/pkg/db/postgres"
-
-	"github.com/astaxie/beego"
 )
 
 // Initialize make routes.init to be explicit, we have more control on this process
@@ -23,12 +22,22 @@ func Initialize(name, version string) {
 		return
 	}
 	tempDB := databases.NewTempDatabase(d)
+	graphQlDB := databases.NewGraphQLDatabase(d)
 	tempHelper := helpers.NewTempHelper(tempDB)
+	graphQLHelper := helpers.NewGraphQlHelper(graphQlDB)
+
 	ns := beego.NewNamespace("/api",
 		beego.NSNamespace("/temp",
 			beego.NSInclude(
 				&controller.TempController{
 					TempHelper: tempHelper,
+				},
+			),
+		),
+		beego.NSNamespace("/graphql",
+			beego.NSInclude(
+				&controller.GraphQLController{
+					GraphQLHelper: graphQLHelper,
 				},
 			),
 		),

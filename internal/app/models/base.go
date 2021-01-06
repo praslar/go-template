@@ -13,3 +13,9 @@ type BaseModel struct {
 	UpdatedAt time.Time  `json:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP"`
 	DeletedAt *time.Time `json:"deleted_at" sql:"index"`
 }
+
+type ResponseDefault struct {
+	Code    string      `json:"code"`
+	Message string      `json:"message"`
+	Data    interface{} `json:"data,omitempty"`
+}

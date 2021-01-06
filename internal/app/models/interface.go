@@ -15,7 +15,7 @@ type BaseDatabase interface {
 }
 
 type BaseHelper interface {
- 	Create(ctx context.Context, req interface{}) (interface{}, error)
+	Create(ctx context.Context, req interface{}) (interface{}, error)
 	Update(ctx context.Context, req interface{}) (interface{}, error)
 	GetOneByID(ctx context.Context, id uuid.UUID) (interface{}, error)
 	GetAll(ctx beego.Controller) ([]interface{}, error)

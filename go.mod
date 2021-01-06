@@ -7,6 +7,7 @@ require (
 	github.com/caarlos0/env/v6 v6.2.2
 	github.com/google/uuid v1.1.1
 	github.com/jinzhu/gorm v1.9.13
+	github.com/sendgrid/rest v2.6.2+incompatible
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 	github.com/sirupsen/logrus v1.7.0
 	github.com/smartystreets/goconvey v1.6.4

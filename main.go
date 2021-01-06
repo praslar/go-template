@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	name    = "Variant"
-	version = "0.0.0"
+	name    = "go-template"
+	version = "1.0.0"
 )
 
 func main() {
