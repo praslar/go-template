@@ -195,7 +195,7 @@ func (c *DemoController) Delete() {
 		return
 	}
 	
-	// Get product attribute id from param
+	// Get demo id from param
 	demoID, err := common.With(c.Controller).On("path").Uuid("id")
 	if err != nil {
 		logger.Errorf("Invalid product attribute ID, %s", err)
