@@ -28,7 +28,7 @@ func (g GraphQlDatabase) GetOneByID(ctx context.Context, id string) (interface{}
 	panic("implement me")
 }
 
-func (g GraphQlDatabase) GetAll(ctx beego.Controller) ([]interface{}, error) {
+func (g GraphQlDatabase) GetAll(ctx beego.Controller) (interface{}, error) {
 	panic("implement me")
 }
 

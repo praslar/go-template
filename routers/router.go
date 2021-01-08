@@ -21,16 +21,16 @@ func Initialize(name, version string) {
 	if err != nil {
 		return
 	}
-	tempDB := databases.NewTempDatabase(d)
 	graphQlDB := databases.NewGraphQLDatabase(d)
-	tempHelper := helpers.NewTempHelper(tempDB)
+	demoDB := databases.NewDemoDatabase(d)
 	graphQLHelper := helpers.NewGraphQlHelper(graphQlDB)
+	demoHelper := helpers.NewDemoHelper(demoDB)
 
 	ns := beego.NewNamespace("/api",
-		beego.NSNamespace("/temp",
+		beego.NSNamespace("/demo",
 			beego.NSInclude(
-				&controller.TempController{
-					TempHelper: tempHelper,
+				&controller.DemoController{
+					DemoHelper: demoHelper,
 				},
 			),
 		),

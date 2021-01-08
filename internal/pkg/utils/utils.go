@@ -33,7 +33,7 @@ func AutoMigration() (err error) {
 		return fmt.Errorf("error while creating DB extension 'uuid-ossp': %s", err)
 	}
 	//migrate table
-	t := dbPublic.AutoMigrate(&models.Temp{})
+	t := dbPublic.AutoMigrate(&models.Demo{})
 	return t.Error
 }
 

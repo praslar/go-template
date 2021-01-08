@@ -26,6 +26,26 @@ type GraphQLHelper struct {
 	tempDB graphqlDatabase
 }
 
+func (g *GraphQLHelper) Create(ctx context.Context, req interface{}, creatorID uuid.UUID) (interface{}, error) {
+	panic("implement me")
+}
+
+func (g *GraphQLHelper) Update(ctx context.Context, req interface{}, objectID uuid.UUID, updaterID uuid.UUID) (interface{}, error) {
+	panic("implement me")
+}
+
+func (g *GraphQLHelper) GetOneByID(ctx context.Context, id uuid.UUID) (interface{}, error) {
+	panic("implement me")
+}
+
+func (g *GraphQLHelper) GetAll(ctx beego.Controller) (interface{}, error) {
+	panic("implement me")
+}
+
+func (g *GraphQLHelper) Delete(ctx context.Context, id uuid.UUID) error {
+	panic("implement me")
+}
+
 func NewGraphQlHelper(db graphqlDatabase) *GraphQLHelper {
 	return &GraphQLHelper{
 		db,
@@ -66,22 +86,3 @@ func (g *GraphQLHelper) Login(ctx context.Context, req interface{}) (interface{}
 	return res, nil
 }
 
-func (g *GraphQLHelper) Create(ctx context.Context, req interface{}) (interface{}, error) {
-	panic("implement me")
-}
-
-func (g *GraphQLHelper) Update(ctx context.Context, req interface{}) (interface{}, error) {
-	panic("implement me")
-}
-
-func (g *GraphQLHelper) GetOneByID(ctx context.Context, id uuid.UUID) (interface{}, error) {
-	panic("implement me")
-}
-
-func (g *GraphQLHelper) GetAll(ctx beego.Controller) ([]interface{}, error) {
-	panic("implement me")
-}
-
-func (g *GraphQLHelper) Delete(ctx context.Context, id uuid.UUID) error {
-	panic("implement me")
-}

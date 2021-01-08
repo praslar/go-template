@@ -34,7 +34,7 @@ gen:
     status: 500
     message: "Database error"
 
-variant:
+demo:
   duplicated:
     code: "error"
     status: 400
@@ -43,4 +43,4 @@ variant:
   not_found:
     code: "error"
     status: 404
-    message: "Variant not found"
+    message: "Record not found"

@@ -22,14 +22,14 @@ type (
 		Database     Status
 	}
 
-	VariantStatus struct {
+	DemoStatus struct {
 		NotFound   Status `yaml:"not_found"`
 		Duplicated Status
 	}
 
 	statuses struct {
-		Gen     GenStatus
-		Variant VariantStatus `yaml:"variant"`
+		Gen  GenStatus
+		Demo DemoStatus `yaml:"demo"`
 	}
 )
 
@@ -73,6 +73,6 @@ func Gen(err string) GenStatus {
 	return load(err).Gen
 }
 
-func Variant(err string) VariantStatus {
-	return load(err).Variant
+func Demo(err string) DemoStatus {
+	return load(err).Demo
 }
